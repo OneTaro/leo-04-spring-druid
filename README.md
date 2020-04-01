@@ -40,3 +40,29 @@ druid的配置可以参考 application-db.properties 文件
 
 怎么选择连接池？
 ![连接池选择](src/main/resources/static/image/连接池选择.png)
+
+
+
+
+### Alibaba Druid的一些说明
+
+慢sql日志
+
+系统属性配置：监控执行时间超过3s的sql
+* druid.stat.logSlowSql=true
+* druid.stat.slowSqlMillis=3000
+
+Spring Boot
+* spring.datasource.druid.filter.stat.enabled=true
+* spring.datasource.druid.filter.stat.log-slow-sql=true
+* spring.datasource.druid.filter.stat.slow-sql-millis=3000
+
+一些注意事项
+* 没有特殊情况，不要在生产环境打开监控的servlet
+* 没有连接泄露可能的情况下，不要开启removeAbandoned
+* testXxx 的使用需要注意
+* 务必配置合理的超时时间
+
+
+
+
